@@ -10,12 +10,13 @@ terraform {
 
   backend "s3" {
     # 백엔드 설정은 환경별로 다르게 구성
-    # terraform init -backend-config=environments/source/backend.conf
+    # terraform init -backend-config=environments/target/backend.conf
   }
 }
 
 provider "aws" {
-  region = var.aws_region
+  region  = var.aws_region
+  profile = "target"
   
   default_tags {
     tags = {
